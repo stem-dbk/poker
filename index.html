@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>scrum poker - no crap</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', 'sans-serif';
+        max-width: 800px;
+    }
+
+    .info {
+        background-color: lightgrey;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-rows: auto;
+    }
+    .card {
+        margin: 10px;
+        padding: 50px 0;
+        background-color: #61a60e;
+        border-radius: 10px;
+        border: 0px solid black;
+    }
+    .card p {
+        text-align: center;
+        position: relative;
+        font-size: 50px;
+        color: white;
+    }
+
+    .modal {
+        display: none;
+    }
+
+    .modal-c {
+        position: absolute;
+        top: 50px;        
+        margin: 20% 10%;
+        width: 80vw;
+        height: 60vh;
+        background-color: #002355;
+        color: white;
+        border-radius: 25px;
+    }
+
+    .modal p {
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 100px;;
+    }
+
+</style>
+<body>
+
+    <div class="info">
+        <p>klik op de kaart om hem te openen, klik er opnieuw op om hem weer te sluiten</p>
+    </div>
+
+    <div class="grid">
+        <div onclick="clicker(1)" class="card">
+            <p>1</p>
+        </div>
+        <div onclick="clicker(2)" class="card">
+            <p>2</p>
+        </div>
+        <div onclick="clicker(3)" class="card">
+            <p>3</p>
+        </div>
+        <div onclick="clicker(5)" class="card">
+            <p>5</p>
+        </div>
+        <div onclick="clicker(8)" class="card">
+            <p>8</p>
+        </div>
+        <div onclick="clicker(13)" class="card">
+            <p>13</p>
+        </div>
+        <div onclick="clicker(20)" class="card">
+            <p>20</p>
+        </div>
+        <div onclick="clicker(40)" class="card">
+            <p>40</p>
+        </div>   
+        <div onclick="clicker(100)" class="card">
+            <p>100</p>
+        </div>   
+    </div>
+    
+    <div onclick="closer()" class="modal" id="modal">
+        <div class="modal-c">
+            <p id="nummer">oeps</p>
+        </div>
+    </div>
+
+<script>
+    function clicker(n) {
+        var modal = document.getElementById("modal");
+        modal.style.display = "block";  
+        document.getElementById("nummer").innerHTML = n; 
+    }
+
+    function closer() {
+        modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
